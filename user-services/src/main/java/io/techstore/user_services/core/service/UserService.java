@@ -2,7 +2,6 @@ package io.techstore.user_services.core.service;
 
 import io.techstore.user_services.core.domain.model.User;
 import io.techstore.user_services.core.port.in.UserServicePort;
-import io.techstore.user_services.core.port.out.EmailSenderDataPort;
 import io.techstore.user_services.core.port.out.UserDataPort;
 import io.techstore.user_services.infrastructure.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +19,8 @@ public class UserService extends AbstractService<UserEntity, UUID, UserDataPort>
 
     @Autowired
     private final CpfValidatorService cpfValidator;
-    @Autowired
-    private final EmailSenderDataPort emailSender;
+//    @Autowired
+//    private final EmailSenderDataPort emailSender;
 
     @Override
     public void register(final User user) {
@@ -29,7 +28,7 @@ public class UserService extends AbstractService<UserEntity, UUID, UserDataPort>
         this.port.register(user);
 
         String body = "Cadastro realizado com sucesso!\nNome: " + user.getFirstName() + "\nEmail: " + user.getMail();
-        emailSender.send(user.getMail(), "Cadastro confirmado", body);
+//        emailSender.send(user.getMail(), "Cadastro confirmado", body);
     }
 
     @Override
